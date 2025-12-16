@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="">
+  <meta name="keywords" content="Nerfies, D-NeRF, NeRF">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Unveiling the Attribute Misbinding Threat in Identity-Preserving Models</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Unveiling the Attribute Misbinding Threat in Identity-Preserving Models</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+            Junming Fu<sup>1</sup>,
+            </span>
+            <span class="author-block">
+            Jishen Zeng<sup>2</sup>,
+            </span>
+            <span class="author-block">
+            Yi Jiang<sup>1</sup>,
+            </span>
+            <span class="author-block">
+            Peiyu Zhuang<sup>1</sup>,
+            </span>
+            <span class="author-block">
+             Baoying Chen<sup>2</sup>,
+            </span>
+            <span class="author-block">
+            Siyu Lu<sup>1</sup>,
+            </span>
+            <span class="author-block">
+            Jianquan Yang<sup>1,3*</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>School of Cyber Science and Technology, Shenzhen Campus of Sun Yat-sen University</span>
+            <br><span class="author-block"><sup>2</sup>Alibaba Group, </span>
+            <br><span class="author-block"><sup>3</sup>Shenzhen Institute of Advanced Technology</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://openreview.net/forum?id=IRwQKxJEH9"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/junmingF/AMA"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Dataset Link.
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                  </a> -->
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+  <section class="hero teaser">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="content has-text-centered" style="margin-bottom: 1.5rem;">
+        <p style="color: #eb3535d2; font-weight: bold; font-size: 1.5em;">
+          Disclaimer: This paper contains NSFW imagery that might be offensive to some readers.
+        </p>
+      </div>
+        <img src="./static/images/show(crow)_01.png" alt="Teaser Image" height="100%">
+        <h2 class="subtitle has-text-centered">
+          </br>
+          Demonstration of the proposed Attribute Misbinding Attack against five leading identity-preserving models. To avoid infringing upon the portrait rights of real individuals, all reference face images used in this demonstration are portraits generated by StyleGAN2.
+        </h2>
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Identity-preserving models have led to notable progress in generating personalized content. Unfortunately, such models also exacerbate risks when misused, for instance, by generating threatening content targeting specific individuals. This paper introduces the <strong>Attribute Misbinding Attack</strong>, a novel method that poses a threat to identity-preserving models by inducing them to produce Not-Safe-For-Work (NSFW) content. The attack's core idea involves crafting benign-looking textual prompts to circumvent text-filter safeguards and leverage a key model vulnerability: flawed attribute binding that stems from its internal attention bias. This results in misattributing harmful descriptions to a target identity and generating NSFW outputs. To facilitate the study of this attack, we present the <strong>Misbinding Prompt</strong> evaluation set, which examines the content generation risks of current state-of-the-art identity-preserving models across four risk dimensions: pornography, violence, discrimination, and illegality. Additionally, we introduce the <strong>Attribute Binding Safety Score (ABSS)</strong>, a metric for concurrently assessing both content fidelity and safety compliance. Experimental results show that our Misbinding Prompt evaluation set achieves a <strong>5.28</strong>% higher success rate in bypassing five leading text filters (including GPT-4o) compared to existing main-stream evaluation sets, while also demonstrating the highest proportion of NSFW content generation. The proposed ABSS metric enables a more comprehensive evaluation of identity-preserving models by concurrently assessing both content fidelity and safety compliance.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+  </div>
+</section>
+
+<section class="method">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Method</h2>
+
+        <div class="container is-max-desktop">
+          <img src="./static/images/frame_01.png" alt="Framework Overview" style="width: 100%; height: auto;">
+        </div>
+
+        <div class="content has-text-justified" style="margin-top: 15px;">
+          <p>
+            The proposed framework for generating <strong>Misbinding Prompt</strong> evaluation set and evaluating the safety of identity-preserving models. The framework consists of four stages: 
+            <strong>(1) Sensitive Term Expansion</strong>, to methodically broaden the vocabulary of sensitive terms; 
+            <strong>(2) Attribute Misbinding Attack</strong>, to programmatically create prompts via predefined strategies; 
+            <strong>(3) Diffusion Generation</strong>, to use prompts and identity reference images for synthesis; 
+            <strong>(4) Attribute Binding Safety Score Calculation</strong>, where an MLLM assesses the output to calculate the final score.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered is-variable is-8"> <div class="column is-half" style="display: flex; flex-direction: column;">
+        <div class="content has-text-left" style="flex-grow: 1;"> <h2 class="title is-3 has-text-centered">Attack Mechanism</h2>
+          <p>
+            The model erroneously binds sensitive attributes intended for the background or objects to the main human subject, thereby generating NSFW content.
+          </p>
+        </div>
+        <figure class="image">
+            <img src="./static/images/misbinding_01.png"
+                 alt="Diagram of Attribute Misbinding Attack Mechanism"
+                 style="width: 100%; height: auto; object-fit: contain;">
+        </figure>
+      </div>
+
+      <div class="column is-half" style="display: flex; flex-direction: column;">
+        <div class="content has-text-left" style="flex-grow: 1;"> <h2 class="title is-3 has-text-centered">ABSS</h2>
+          <p>
+            ABSS (Attribute Binding Safety Score) is a comprehensive metric developed to concurrently assess both content fidelity and safety compliance, quantifying the model's ability to avoid misattributing sensitive descriptors to the target identity.
+          </p>
+        </div>
+        <figure class="image">
+            <img src="./static/images/ABSSSCORE_01.png"
+                 alt="Illustration of Attribute Binding Safety Score"
+                 style="width: 100%; height: auto; object-fit: contain;">
+        </figure>
+      </div>
+
+    </div>
+  </div>
+</section>
+  
+</section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <h3 class="title has-text-centered">System Prompt Exemple</h3>
+      
+        <div id="results-carousel-a" class="carousel results-carousel">
+          
+          <div class="item">
+            <img src="./static/images/prompt/prompt_term_expansion.png" 
+                alt="Attribute Misbinding Example"
+                style="width: 100%; height: auto; object-fit: contain;">
+          </div>
+
+          <div class="item">
+            <img src="./static/images/prompt/prompt_attribute_misbinding.png" 
+                alt="Term Expansion Example" 
+                style="width: 100%; height: auto; object-fit: contain;">
+          </div>
+
+          <div class="item">
+            <img src="./static/images/prompt/fliter.png" 
+                alt="Term Expansion Example" 
+                style="width: 100%; height: auto; object-fit: contain;">
+          </div>
+                    
+          <div class="item">
+            <img src="./static/images/prompt/safetye.png" 
+                alt="Term Expansion Example" 
+                style="width: 100%; height: auto; object-fit: contain;">
+          </div>
+
+          </div>
+
+    </div>
+  </section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Acknowledgements</h2>
+          <div class="content has-text-centered">
+          <p align="center">
+         This research would not have been possible without the generous contributions from the open-source community. We gratefully acknowledge the developers of the identity-preserving models (e.g., UniPortrait, PuLID, PhotoMaker) and the safety mechanisms (text filters and evaluation metrics) that served as the foundation for our experiments. Regarding data resources, we thank the authors of StyleGAN2 and CelebA-Dialog for providing high-quality synthesized and annotated face images.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{JunmingFu2026AttributeMisbinding,
+  author    = {Junming Fu, Jishen Zeng, Yi Jiang, Peiyu Zhuang, Baoying Chen, Siyu Lu, Jianquan Yang},
+  title     = {Unveiling the Attribute Misbinding Threat in Identity-Preserving Models},
+  journal   = {AAAI},
+  year      = {2026},
+}</code></pre>
+  </div>
+</section>
+
+
+
+<footer class="footer">
+    <div class="container">
+      <div class="content has-text-centered">
+        <p align="center">
+          This page template is borrowed from <a
+              href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>.
+              <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
